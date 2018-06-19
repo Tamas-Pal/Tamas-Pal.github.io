@@ -46,7 +46,7 @@
 		var texture = textureLoader1.load( 'tex00.png' );
 		var skymaterial = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 		skymaterial.map = texture;
-	
+		var geometry = new THREE.SphereGeometry(1000, 12, 12);
         var mesh = new THREE.Mesh(geometry, skymaterial);
         mesh.position.set(0, 0, -1000);
 		mesh.material.side = THREE.BackSide;
