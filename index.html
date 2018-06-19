@@ -42,7 +42,7 @@
         scene.add(light1);
 
         //OBJECT
-        var geometry = new THREE.SphereGeometry(2000, 12, 12);
+        var geometry = new THREE.SphereGeometry(1000, 12, 12);
 		mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 		scene.add( mirrorSphereCamera );
 		var textureLoader = new THREE.TextureLoader();
@@ -51,12 +51,11 @@
 		color: 0x0000ff,
 		} );
 		skymaterial.map = texture;
-		.material.side = back;
 		//var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
 //		var material = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
         var mesh = new THREE.Mesh(geometry, skymaterial);
         mesh.position.set(0, 0, -1000);
-		mesh.material.side = THREE.back.side;
+		mesh.material.side = THREE.BackSide;
 		
 		
         scene.add(mesh);
