@@ -42,17 +42,11 @@
         scene.add(light1);
 
         //OBJECT
-        var geometry = new THREE.SphereGeometry(1000, 12, 12);
-		mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
-		scene.add( mirrorSphereCamera );
-		var textureLoader = new THREE.TextureLoader();
-		var texture = textureLoader.load( 'tex00.png' );
-		var skymaterial = new THREE.MeshBasicMaterial( { 
-		color: 0xffffff,
-		} );
+		var textureLoader1 = new THREE.TextureLoader();
+		var texture = textureLoader1.load( 'tex00.png' );
+		var skymaterial = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 		skymaterial.map = texture;
-		//var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
-//		var material = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+	
         var mesh = new THREE.Mesh(geometry, skymaterial);
         mesh.position.set(0, 0, -1000);
 		mesh.material.side = THREE.BackSide;
@@ -60,10 +54,19 @@
 		
         scene.add(mesh);
 		
+		//scene.add(cubeCamera.object3d)
+
+		var geometry2 = new THREE.SphereGeometry(100, 12, 12);
+		mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
+		scene.add( mirrorSphereCamera );
+		var mirrorMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
+//		var material = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+        var mesh2 = new THREE.Mesh(geometry2, mirrorMaterial);
+        mesh2.position.set(0, 0, -1000);
 		
-//		scene.add(cubeCamera.object3d)
-
-
+		
+		
+        scene.add(mesh2);
         //RENDER LOOP
         requestAnimationFrame(render);
 
