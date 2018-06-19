@@ -59,7 +59,7 @@
 		var geometry2 = new THREE.SphereGeometry(100, 12, 12);
 		mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 		scene.add( mirrorSphereCamera );
-		var mirrorMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
+		var mirrorMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget.texture } );
 //		var material = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
         var mesh2 = new THREE.Mesh(geometry2, mirrorMaterial);
         mesh2.position.set(0, 0, -1000);
